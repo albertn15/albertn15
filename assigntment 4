@@ -1,0 +1,98 @@
+## albert novanto pratama jayadi
+## 2201835656
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+## 
+
+Data = pd.read_csv("listings.csv")
+print(Data.head())
+
+##
+
+discrete = Data[["minimum_nights","number_of_reviews","calculated_host_listings_count","availability_365"]]
+continuous = Data[["latitude","longitude","price"]]
+
+print(discrete.head())
+print(continuous.head())
+
+##
+
+discrete = discrete.mean()
+continous = continuous.mean()
+
+print(discrete)
+print()
+print(continous)
+print()
+
+discretevar = np.var(discrete)
+continousvar = np.var(continuous)
+
+print(discretevar)
+print()
+print(continousvar)
+
+##
+
+discretetype = discreteData.astype(int)
+print(discretetype.head())
+
+##
+
+plt.hist(discretetype["minimum_nights"], bins=20, density=True)
+
+##
+
+latitude = continuousData['latitude'].tolist()
+longitude = continuousData['longitude'].tolist()
+test = continuousData
+plt.hist(latitude, bins=20)
+
+##
+
+plt.hist(longitude, bins=20)
+
+##
+
+from numpy import mean,std
+
+meanLongitude = mean(longitude)
+stdLongitude = std(longitude)
+
+meanLatitude = np.mean(latitude)
+stdLatitude = np.std(latitude)
+
+print(meanLatitude, stdLatitude)
+print(meanLongitude, stdLongitude)
+
+##
+
+from scipy.stats import norm
+
+distributionLatitude = norm(meanLatitude, stdLatitude)
+distributionLongitude = norm(meanLongitude, stdLongitude)
+
+##
+
+min_weightLatitude = min(latitude)
+max_weightLatitude = max(latitude)
+valuesLatitude = list(range(int(min_weightLatitude), int(max_weightLatitude)))
+
+min_weightLongitude = min(longitude)
+max_weightLongitude = max(longitude)
+valuesLongitude = list(range(int(min_weightLongitude), int(max_weightLongitude)))
+
+##
+
+probabilitiesLatitude = [distributionLatitude.pdf(v) for v in valuesLatitude]
+probabilitiesLongitude = [distributionLongitude.pdf(v) for v in valuesLongitude]
+
+##
+
+from matplotlib import pyplot
+pyplot.hist(latitude, bins=20, density=True) # , 
+pyplot.plot(valuesLatitude, probabilitiesLatitude)
+
+##
