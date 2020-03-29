@@ -96,3 +96,8 @@ pyplot.hist(latitude, bins=20, density=True) # ,
 pyplot.plot(valuesLatitude, probabilitiesLatitude)
 
 ##
+
+pyplot.hist(longitude, bins=20, density=True)
+pyplot.plot(valuesLongitude, probabilitiesLatitude)
+
+##
